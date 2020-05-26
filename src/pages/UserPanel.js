@@ -31,7 +31,7 @@ function UserPanel(){
             <div className="panel-left">
                 <p className="name">Witaj, {user && user.first_name}</p>
                 <div className="user-btn-actions">
-                    <button className="basket">Zobacz koszyk</button>
+                    <button className="basket"><Link to="/cart" className="user-cart">Zobacz koszyk</Link></button>
                     <button className="basket">Ustawienia</button>
                     <button className="basket">Edytuj profil</button>
                     <button className="basket">Kontakt</button>

@@ -1,24 +1,29 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import BookCard from '../Components/BookCard';
 import CategoriesFromBase from "../Components/CategoriesFromBase";
 import CategoryFromBase from "../Components/CategoryFromBase";
+import Item from "../Components/cart/Item";
+
 
 const Books = () => {
     const [loading, setLoading] = useState(true);
     const [books, setBooks] = useState([]);
+    const [category,setCategory] = useState([]);
 
-    
+    const {id} = useParams();
+
+   
 
     useEffect(() => {
         setLoading(true);
-        fetch('/api/books').then(response => response.json()).then(response => {
+        fetch(`/api/books${id ? `?categoryId=${id}` : ''}`).then(response => response.json()).then(response => {
             setLoading(false);
+            console.log(`/api/books${id ? `?categoryId=${id}` : ''}`);
+            console.log(id,response);
             setBooks(response);
         })
-    }, []);
-
-  
+    }, [id]);
 
     if(loading) {
         return <p className="loading">Loading...</p>;
@@ -27,6 +32,7 @@ const Books = () => {
 
     return (
         <>
+        <Link to="/cart" className="showCart">Koszyk<i className="fas fa-shopping-cart"></i></Link>
         <Link to="/" className="sign"><i className="fas fa-arrow-left"></i>Powrót</Link>
             <CategoriesFromBase/>
         

@@ -39,32 +39,52 @@ const validateRegistrationFieldsMiddleWare = [
 ]
 
 
-app.get('/api/books', (req,res)=>{
-	const {search} = req.body;
-
-	let searchPromise;
-
-	if(req.query.searchBook){
-		searchPromise = searchBook(req.query.search);
-	}else{
-		searchPromise = searchBook()
-	}
-	searchPromise.then(booksSearch => res.send(booksSearch)).catch(e => res.send(e,500))
-
-
-})
 
 
 app.get('/api/books', (req, res) => {
 
+
 	let booksPromise;
-	if(req.query.categoryId) {
-	booksPromise = getBookFromCategory(req.query.categoryId);
+	if(req.query.search){
+		booksPromise = searchBook(req.query.search)
+	}
+	else if(req.query.categoryId) {
+		booksPromise = getBookFromCategory(req.query.categoryId);
 	}else {
-	booksPromise = getBooks()
+		booksPromise = getBooks()
 	}
 	booksPromise.then(books => res.send(books)).catch(e => res.send(e,500))	
 });
+
+const {createOrder} = require('lib/repository/orders')
+
+app.post('/api/orders', (req, res) => {
+	const promises = [];
+	const quantities = {};
+	console.log(req.body.data);
+	req.body.data.forEach(row => {
+		promises.push(getBook(row.id))
+		quantities[row.id] = row.quatity;
+	})
+	Promise.all(promises).then(results => {
+		let totalItems = 0;
+		let totalAmount = 0;
+		const items = [];
+		results.forEach(book => {
+			totalItems += quantities[book.id];
+			totalAmount += quantities[book.id] * book.price;
+			items.push({
+				...book,
+				quantity: quantities[book.id]
+			})
+		});
+		console.log(items);
+		// tutaj musisz sam sobie dorobic 2 funckje w lib/db/orders
+		// jak masz pola items i 
+		createOrder(req.session.user.id, totalItems, totalAmount, items)
+		.then(orderId => res.send(orderId))
+	}).catch(() => res.send('Error while placing order', 500))
+})
 
 
 app.post('/api/signin', (req, res) => {

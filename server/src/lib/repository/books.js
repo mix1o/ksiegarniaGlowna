@@ -9,7 +9,7 @@ const getBook = (id) => db.query('SELECT * FROM mydb.books WHERE id=?', [id]).th
 	return null;
 });
 
-const searchBook = (search) => db.query('SELECT * FROM mydb.books WHERE title LIKE ?',['%'+search+'%']).then(([result,fields]) =>{
+const searchBook = (search) => db.query('SELECT * FROM mydb.books WHERE title LIKE ?',[`%${search}%`]).then(([result,fields]) =>{
 	return result;
 })
 

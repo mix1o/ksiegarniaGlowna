@@ -1,7 +1,29 @@
 import React from 'react';
 import "../../App.css"
 import {Link} from "react-router-dom";
-function Title({title,cover,price,page_count,category,cover_type,year_published}){
+import {useCartItems} from "../../hooks/cart"
+function Title({id,title,cover,price,page_count,category,cover_type,year_published}){
+
+
+    const [items, addItem, removeItem, updateItem] = useCartItems()
+
+    const book = {
+        id: id,
+        cover: cover,
+        title: title,
+        price: price,
+        page_count: page_count,
+        category: category,
+        cover_type: cover_type
+    };
+
+
+    const toCart = () =>{
+        addItem(book);
+    }
+
+
+
     return (
         <>
         <Link className="sign" to="/books"><i className="fas fa-arrow-left"></i>Powrót</Link>
@@ -22,7 +44,7 @@ function Title({title,cover,price,page_count,category,cover_type,year_published}
                     <li>Rok wydania: {year_published}</li>
                 </ul>
             </div>
-            <button className="btn-add">Dodaj do koszyka <i className="fas fa-shopping-basket"></i></button>
+            <button onClick={toCart} className="btn-add">Dodaj do koszyka <i className="fas fa-shopping-basket"></i></button>
             </div>
         </div>
         </>
