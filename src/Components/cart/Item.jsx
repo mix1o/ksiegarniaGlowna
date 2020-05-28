@@ -20,7 +20,7 @@ import {Link} from "react-router-dom"
             <p className="item-price">{price}PLN</p>
             </div>
             <div className="item-actions">
-            <Link to="/order" className="btn-act buy">Kupuję</Link>
+            {/* <Link to="/order" className="btn-act buy">Kupuję</Link> */}
             <button onClick={remove} className="btn-act remove">Usuń</button>
             </div>
             <div className="container-count">

@@ -5,7 +5,8 @@ function Thanks(){
         <div className="thanks-container">
             <i className="fas fa-times"></i>
             <p className="thanks-text">Dziękuje za złożenie zamówienia</p>
-            <Link to="/" className="sign">Powrót</Link>
+            <Link to="/" className="sign"><i className="fas fa-arrow-left"></i>Powrót</Link>
+            
         </div>
     )
 }

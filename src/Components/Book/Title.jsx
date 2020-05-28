@@ -2,8 +2,13 @@ import React from 'react';
 import "../../App.css"
 import {Link} from "react-router-dom";
 import {useCartItems} from "../../hooks/cart"
+import {useCookies} from 'react-cookie';
+
 function Title({id,title,cover,price,page_count,category,cover_type,year_published}){
 
+
+    const [cookies] = useCookies({});
+    const {user} = cookies;
 
     const [items, addItem, removeItem, updateItem] = useCartItems()
 
@@ -14,7 +19,8 @@ function Title({id,title,cover,price,page_count,category,cover_type,year_publish
         price: price,
         page_count: page_count,
         category: category,
-        cover_type: cover_type
+        cover_type: cover_type,
+        quantity: 1,
     };
 
 
@@ -27,6 +33,9 @@ function Title({id,title,cover,price,page_count,category,cover_type,year_publish
     return (
         <>
         <Link className="sign" to="/books"><i className="fas fa-arrow-left"></i>Powrót</Link>
+        <Link to="/cart" className="showCart">Koszyk<i className="fas fa-shopping-cart"></i></Link>
+
+        {user && <Link className="sign" to="/userpanel">Panel</Link>}
         <div className="container-single-book">
             <div className="img-single-book">
                 <img src={cover} alt="Zdjęcie okładki"/>

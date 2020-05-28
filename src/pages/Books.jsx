@@ -4,6 +4,7 @@ import BookCard from '../Components/BookCard';
 import CategoriesFromBase from "../Components/CategoriesFromBase";
 import CategoryFromBase from "../Components/CategoryFromBase";
 import Item from "../Components/cart/Item";
+import {useCookies} from 'react-cookie';
 
 
 const Books = () => {
@@ -13,14 +14,18 @@ const Books = () => {
 
     const {id} = useParams();
 
+    const [cookies] = useCookies({});
+  const {user} = cookies;
    
+
+
 
     useEffect(() => {
         setLoading(true);
-        fetch(`/api/books${id ? `?categoryId=${id}` : ''}`).then(response => response.json()).then(response => {
+        fetch(`/api/books${id ? `?categoryId=${id}` : ''}`)
+        .then(response => response.json())
+        .then(response => {
             setLoading(false);
-            console.log(`/api/books${id ? `?categoryId=${id}` : ''}`);
-            console.log(id,response);
             setBooks(response);
         })
     }, [id]);
@@ -34,6 +39,7 @@ const Books = () => {
         <>
         <Link to="/cart" className="showCart">Koszyk<i className="fas fa-shopping-cart"></i></Link>
         <Link to="/" className="sign"><i className="fas fa-arrow-left"></i>Powrót</Link>
+        {user && <Link to="/userpanel" className="sign">Panel</Link>}
             <CategoriesFromBase/>
         
       
@@ -50,10 +56,8 @@ const Books = () => {
             /> )}
         </div>
         </>
-      )
+      );
 
-
-    
 }
 
 export default Books;

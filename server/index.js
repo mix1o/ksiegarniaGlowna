@@ -56,19 +56,20 @@ app.get('/api/books', (req, res) => {
 	booksPromise.then(books => res.send(books)).catch(e => res.send(e,500))	
 });
 
-const {createOrder} = require('lib/repository/orders')
+const {createOrder, createOrderItem, getUserOrders,getOrder} = require('lib/repository/orders')
 
 app.post('/api/orders', (req, res) => {
 	const promises = [];
 	const quantities = {};
-	console.log(req.body.data);
+	
 	req.body.data.forEach(row => {
 		promises.push(getBook(row.id))
-		quantities[row.id] = row.quatity;
+		quantities[row.id] = row.quantity;
 	})
 	Promise.all(promises).then(results => {
 		let totalItems = 0;
 		let totalAmount = 0;
+		
 		const items = [];
 		results.forEach(book => {
 			totalItems += quantities[book.id];
@@ -78,13 +79,35 @@ app.post('/api/orders', (req, res) => {
 				quantity: quantities[book.id]
 			})
 		});
-		console.log(items);
-		// tutaj musisz sam sobie dorobic 2 funckje w lib/db/orders
-		// jak masz pola items i 
-		createOrder(req.session.user.id, totalItems, totalAmount, items)
-		.then(orderId => res.send(orderId))
-	}).catch(() => res.send('Error while placing order', 500))
+		createOrder(req.session.user.first_name, req.session.user.email, req.session.user.id,totalAmount, totalItems, items)
+		.then(orderId => {
+			items.forEach(async item => {
+				await createOrderItem(orderId, item.id, item.price, item.quantity );
+			})
+			res.send({orderId})
+		})
+	}).catch(e => {
+		res.status(500).send(e)
+	});
 })
+
+
+app.get('/api/orders', (req, res) => {	
+	getUserOrders(req.session.user.id).then(orders => {
+		res.send(orders)
+	});
+})
+
+app.get('/api/orders/:id', (req, res) => {
+	getOrder(req.params.id)
+	.then(order => {
+		res.send(order)
+	})
+	.catch(e => {
+		console.log(e);
+		res.status(500).send(e)
+	})
+});
 
 
 app.post('/api/signin', (req, res) => {

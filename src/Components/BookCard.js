@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import "../App.css"
 import {Link} from "react-router-dom";
 import {useCartItems} from "../hooks/cart";
@@ -20,11 +20,11 @@ function Book({id,cover,title,price,page_count,category,cover_type}){
         quantity: 1,
     };
 
+    
 
     const toCart = () =>{
-        addItem(book);
+        addItem(book);     
     }
-
 
 
     return (

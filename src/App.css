@@ -190,7 +190,7 @@ body {
   padding: 5rem;
   height: 100vh;
   width:100%;
-  margin-top: 3rem;
+  margin-top: 12rem;
 }
 .container-book {
   background: #faf9f9;
@@ -337,6 +337,7 @@ body {
 .content-single-book {
   display: flex;
   height: 100%;
+  width: 40%;
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
@@ -350,7 +351,7 @@ body {
 .description-single-book {
   padding: 1rem;
   width: 80%;
-  
+
 }
 .header-single-book {
   text-align: center;
@@ -425,6 +426,7 @@ label {
   padding: 1rem;
   background: #98fb98;
 }
+
 .name {
   font-size: 2.2rem;
   position: absolute;
@@ -477,7 +479,7 @@ label {
 }
 .panel-right {
   background: #333;
-  height: 94vh;
+  height: auto;
   width: 100vw;
   position: relative;
 }
@@ -520,7 +522,7 @@ label {
   position: absolute;
   top:50%;
   left:50%;
-  width: 90%;
+  width: 100%;
   transform: translate(-50%,-50%);
   display: flex;
   justify-content: space-around;
@@ -621,7 +623,7 @@ label {
 .menu-list {
   position: absolute;
   left: 52%;
-  top: 5rem;
+  top: 10rem;
   text-align: center;
   transform: translate(-50%,-50%);
   list-style: none;
@@ -726,6 +728,7 @@ label {
 .container-cart {
   padding: 2rem;
   margin-top: 2rem;
+  text-align: center;
 }
 .container-items {
   margin-top: 2rem;
@@ -805,6 +808,8 @@ label {
 .user-cart {
   text-decoration: none;
   color: #000;
+  width: 100%;
+  display: inline-block;
 }
 .items-count {
   font-size: 2rem;
@@ -814,15 +819,20 @@ label {
   width: 20%;
   padding: .5rem;
   margin-left: 1rem;
-  font-size: 2rem
+  font-size: 2rem;
+  text-align: center;
 }
 .thanks-container {
   background: #ffd20c;
-  width: 30%;
+  width: 50%;
   padding: 3rem;
-  height: 20vh;
+  height: 53vh;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   position: relative;
   flex-direction: column;
@@ -838,4 +848,90 @@ label {
   right: 2rem;
   cursor: pointer;
   font-size: 3rem;
+}
+.input-cart {
+  text-align: center;
+  background: red;
+  font-size: 1px;
+}
+.cart-buy {
+  border: none;
+  background: #98fb98;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin-top: 2rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .3s ease;
+}
+.actions-cart {
+  height: 20vh;
+}
+.clear {
+  color: #000;
+  text-decoration: none;
+}
+
+.cart-buy:hover {
+  background: #2ab42a;
+}
+.text-about-account {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-top: 1rem;
+  padding: 2rem;
+}
+.text-add-user {
+  margin-bottom: 2rem;
+  text-decoration: none;
+  color: #2ab42a;
+  font-size: 1.8rem;
+  border:2px dashed #333;
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+  transition: all .5s ease-in-out;
+}
+.text-add-user:hover {
+  background: #333;
+  border: 0;
+}
+.container-search-books {
+  width: 95%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  background:#333;
+  grid-gap: 4rem;
+  padding: 5rem;
+  height: 65vh;
+  margin-top: 10rem;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.text-book {
+  grid-template-columns: repeat(3,1fr);
+  display: grid;
+}
+.container-search-book {
+  padding: 1.5rem;
+  background: rgb(235, 235, 235);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.table-order {
+  border: 3px solid #38af38;
+  width: 50%;
+  margin: 4rem 0 2rem 0;
+  padding: 1rem;
+}
+.td {
+  width: 50%;
+  text-align: left;
+  padding: 2rem;
+  font-size: 2rem;
+  border-top: 1px solid #333;
+  border-right: 1px solid #333;
 }

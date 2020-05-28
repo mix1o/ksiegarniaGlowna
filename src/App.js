@@ -13,8 +13,9 @@ import Registration from "./pages/Registration"
 import UserPanel from './pages/UserPanel';
 import {useCookies} from 'react-cookie';
 import Cart from "./pages/Cart";
-import Order from './pages/Order';
+import Orders from './pages/Orders';
 import Thanks from './Components/Thanks';
+import SingleOrder from "./pages/SingleOrder"
 
 function App() {
   const [cookies] = useCookies({});
@@ -26,10 +27,13 @@ function App() {
         <Route path="/sign" exact component={Sign} /> 
         <Route path="/categories/:id" component={Books}/>
         <Route path="/books/:id" component={SingleBook}/>
+        <Route path="/orders/:id" component={SingleOrder}/>
         <Route path="/books" component={Books}/>
         <Route path="/registration" component={Registration}/>
         {user && <Route path="/userpanel" component={UserPanel}/>}
         <Route path="/cart" component={Cart}/>
+        <Route path="/thank" component={Thanks}/>
+        {user && <Route path="/orders" component={Orders}/>}
         <Route path="/" component={Front}/>
     </Switch>
    </Router>
