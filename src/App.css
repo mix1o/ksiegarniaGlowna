@@ -1050,6 +1050,7 @@ label {
   .container-registration {
     min-width: 100%;
     min-height: 80vh;
+    background: red;
   }
   .panel-left {
     width: 100%;
