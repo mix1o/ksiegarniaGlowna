@@ -996,31 +996,8 @@ label {
   }
 }
 
-@media (max-width: 374px) and (orientation: portrait){
-  html {
-    font-size: 3px;
-  }
-  .form > label {
-    font-size: 2rem;
-  }
-  .container-sign-parent {
-    min-height: 100vh;
-    min-width: 100%;
-  }
-  .container-registration-parent {
-    min-height: 100vh;
-    min-width: 100%;
-  }
-  .container-registration {
-    width: 100%;
-  }
-  .container-search {
-    width: 100%;
-  }
-}
 
-
-@media (max-width: 700px) and (orientation: portrait) {
+@media (max-width: 700px) , screen and (max-height: 360px) {
   html {
     font-size: 5px;
   }
@@ -1065,16 +1042,21 @@ label {
     width: 40%;
   }
   .container-sign {
-    min-width: 100%;
-    min-height: 60vh;
+    min-width: 90%;
+    min-height: 70vh;
   }
   .form > label {
-    font-size: 3rem;
+    font-size: 2rem;
+  }
+  .input::placeholder {
+    font-size: 2rem;
+  }
+  .input {
+    padding: .3rem;
   }
   .container-registration {
-    min-width: 100%;
+    min-width: 90%;
     min-height: 80vh;
-    background: red;
   }
   .panel-left {
     width: 100%;
