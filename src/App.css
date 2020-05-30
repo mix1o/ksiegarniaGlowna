@@ -922,7 +922,8 @@ label {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 48.5rem;
+  width: 43rem;
+  margin: 0 auto;
 }
 .table-order,.table-order-single {
   border: 3px solid #38af38;
