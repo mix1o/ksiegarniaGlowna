@@ -1009,6 +1009,7 @@ label {
   .left-box {
     width: 100%;
     min-height: 60vh;
+    order: 2;
   }
   .right-box {
     width: 100%;
