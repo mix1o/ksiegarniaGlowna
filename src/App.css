@@ -184,7 +184,7 @@ body {
 .container-books {
   text-align: center;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
   grid-template-rows: repeat(2,1fr);
   grid-gap: 0;
   padding: 5rem;
@@ -982,9 +982,6 @@ label {
   }
   .container-registration {
     width: 40%;
-  }
-  .container-books {
-    grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
   }
 }
 
