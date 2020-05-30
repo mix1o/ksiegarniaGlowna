@@ -964,16 +964,6 @@ label {
 }
 
 
-
-@media (min-width: 1600px){
-  html {
-    font-size: 10px;
-  }
-  .details {
-    font-size: 1.3rem;
-  }
-}
-
 @media (min-width: 1200px) {
   html {
     font-size: 8px;
@@ -992,6 +982,18 @@ label {
     background: red;
   }
 }
+
+
+@media (min-width: 1600px){
+  html {
+    font-size: 10px;
+  }
+  .details {
+    font-size: 1.3rem;
+  }
+}
+
+
 
 
 
