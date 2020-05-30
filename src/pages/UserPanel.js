@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import {useCookies} from 'react-cookie';
 import SearchBooks from "../Components/SearchBooks"
 
+
 function UserPanel(){
     const [cookies] = useCookies({});
     const {user} = cookies;
@@ -21,7 +22,9 @@ function UserPanel(){
             headers: {
                 'Content-type': 'application/json',
             },
-        }).then(()=>{window.location.href="/"});
+        }).then(()=>{
+            window.location.href="/";
+        });
     }
 
     const searchTerm = () => {

@@ -1,12 +1,12 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useReducer} from 'react';
 
 export const useLocalStorage = (key) => {
-    // inicjujesz state
+
     const [value, setValue] = useState(() => {
         try {
-            // pobierasz z localstorage item
+           
             const item = window.localStorage.getItem(key);
-            // zwracasz przeparsowanego jsona
+            
             return item ? JSON.parse(item) : null;
         } catch (error) {
             return null;
@@ -14,23 +14,23 @@ export const useLocalStorage = (key) => {
     })
 
     useEffect(() => {
-        // w momencie kiedy zmienia sie cos w local storage to lapiesz ten event
+        
         window.addEventListener('storage', () => {
-            // pobierasz nowa wartosc
+           
             const v = window.localStorage.getItem(key);
-            // przypisujesz nowa wartosc do lokalnego state
+           
             setValue(v ? JSON.parse(v) : null);
         });
     }, [key]);
 
-// zapisujesz nowa wartosc local storage
+
     const setItem = (val) => {
         try {
-            // zapisujesz do lokalnego state
+           
             setValue(val);
-            // zapisujesz do localstorage wartosc jsona
+           
             window.localStorage.setItem(key, JSON.stringify(val));
-            // rzucasz event storage zeby sie odswiezylo tez w tej samej karcie
+            
             window.dispatchEvent(new Event('storage'));
         } catch (e) {
         }
@@ -40,12 +40,18 @@ export const useLocalStorage = (key) => {
 }
 
 export const useCart = () => {
-    // pobierasz wartosc cart z local storage
-    return useLocalStorage('cart');
+
+
+    const clearCart = () => {
+        window.localStorage.removeItem('cart');
+        window.localStorage.removeItem('cart_items');
+    }
+
+    return [...useLocalStorage('cart'), clearCart];
 }
 
 export const useCartItems = () => {
-    // pobierasz sobie itemsy z local storage
+    
     let [items, setItems] = useLocalStorage('cart_items');
     let [cart, setCart] = useCart();
 
@@ -53,7 +59,7 @@ export const useCartItems = () => {
         items = [];
     }
 
-    // tutaj przeliczasz totale koszyka
+
     const calculateTotals = () => {
         if(!cart) {
             cart = {};
@@ -67,39 +73,39 @@ export const useCartItems = () => {
         setCart(cart);
     }
 
-    // tutaj ponizej masz 3 funkcje do zarzadzania itemami
-    // add do dodawania
+  
 
     const addItem = (item) => {
-        const itemIdx = items.findIndex(i => i.id === item.id);// ta funckja sprawdza czy juz w itemach masz ksiazke z tym id
-        if(itemIdx > -1) { // jak istnieje to podwyzszasz tylko quantity
+        const itemIdx = items.findIndex(i => i.id === item.id);
+        if(itemIdx > -1) { 
             items[itemIdx].quantity += item.quantity;
-        } else { // jak nie to dodajesz nowy element do tablicy
+        } else { 
             items.push(item);
         }
-        setItems(items);//zapisujesz aktualne itemy
-        calculateTotals(); // przeliczasz total koszyka
+        setItems(items);
+        calculateTotals();
     }
 
     const removeItem = (id) => {
-        const idx = items.findIndex(i => i.id === id); // szukasz czy masz juz item a jak tak to na jakim indexie
+        const idx = items.findIndex(i => i.id === id);
         if(idx !== -1) {
-            items.splice(idx, 1); // jak jest to usuwasz
-            setItems(items); // i zapisujesz
+            items.splice(idx, 1); 
+            setItems(items); 
             calculateTotals();
         }
     }
 
     const updateItem = (item) => {
-        const idx = items.findIndex(i => i.id === item.id); // szukasz czy masz id
+        const idx = items.findIndex(i => i.id === item.id); 
         if(idx !== -1) {
-            items[idx].quantity = item.quantity; // jak masz to podwyzszasz quantity
+            items[idx].quantity = item.quantity; 
             setItems(items);
             calculateTotals();
         }
     }
 
-    // zwracasz tablice ze swoimi hookami
+  
+
     return [items, addItem, removeItem, updateItem];
 }
-// no czaje
+

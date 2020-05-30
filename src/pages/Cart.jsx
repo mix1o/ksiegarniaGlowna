@@ -4,15 +4,16 @@ import {useCartItems} from "../hooks/cart";
 import {Link} from "react-router-dom";
 import Thanks from "../Components/Thanks";
 import {useCookies} from 'react-cookie';
+import {useCart} from "../hooks/cart";
 
 function Cart(){
 
     const [cookies] = useCookies({});
     const {user} = cookies;
 
-    const [items, addItem, removeItem, updateItem] = useCartItems()
+    const [items, addItem, removeItem, updateItem] = useCartItems();
 
-
+    const [,,clearCart] = useCart();
 
 
     const addOrder = () => {
@@ -28,8 +29,12 @@ function Cart(){
             console.log(response)
             window.location.href = "/thank";
         })
+       
+        clearCart();
     }
 
+ 
+    
 
 
 
@@ -44,7 +49,7 @@ function Cart(){
             </div>
             
             <div className="actions-cart">
-            {user && <button className="cart-buy" onClick={() => addOrder()}>Kupuję</button>}
+            {user && <button className="cart-buy" onClick={() => addOrder()} >Kupuję</button>}
             {!user && <><button className="cart-buy"><Link to="/sign" className="clear">Zaloguj się aby dokonać transakcji</Link></button>
             <p className="text-about-account">Nie posiadasz konta?</p><Link className="text-add-user" to="/registration">Zarejestruj się !</Link></>}
             </div>

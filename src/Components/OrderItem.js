@@ -1,19 +1,15 @@
 import React from "react"
 
-function OrderItem({title,price,quantity}){
+function OrderItem({title,price,quantity,cover}){
     return (
         <>
     <tr>
-        <td>Tytuł książki</td>
-        <td>{title}</td>   
-    </tr>
-    <tr>
-        <td>Cena</td>
-        <td>{price}</td>   
-    </tr>
-    <tr>
-        <td>Ilosc</td>
-    <td>{quantity}</td>
+        <td className="td-2">
+            <img className="order-img" src={cover}/>
+        </td>
+        <td className="td-2 order-title">{title}</td>   
+        <td className="td-2">{price}.00 PLN</td>   
+        <td className="td-2">Ilość: {quantity}</td>
     </tr>
     </>
     )

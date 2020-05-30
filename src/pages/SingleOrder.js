@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from "react";
 import {useParams} from "react-router-dom";
-
+import {Link} from "react-router-dom"
 import SingleUserOrder from "../Components/SingleUserOrder"
 import OrderItem from "../Components/OrderItem";
 
@@ -30,15 +30,19 @@ function SingleOrder(){
 
 
       return (
-          <div>
-              <table>
+          <>
+            <Link to="/orders" className="sign"><i className="fas fa-arrow-left"></i>Powrót</Link>
+          <div className="container-cart">
+              <div className="container-items">
+              <table className="table-order-single">
 
             <SingleUserOrder client_name={order.client_name} create_date={order.create_date} email={order.email} items={order.items}  total_amount={order.total_amount} total_items={order.total_items}/>
 
-            {items.map(item => <OrderItem title={item.title} price={item.price} quantity={item.quantity}/>)}
+            {items.map(item => <OrderItem title={item.title} price={item.price} quantity={item.quantity} cover={item.cover}/>)}
             </table>
-
+            </div>
           </div>
+          </>
       )
 
 }

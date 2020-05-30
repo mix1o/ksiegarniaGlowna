@@ -177,4 +177,10 @@ app.get('/api/books/:id', (req, res) => {
 	.catch(e => res.send(e, 500))
 });
 
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'front')));
+app.get('*', (req, res) => {
+  res.sendFile(`${__dirname}/front/index.html`);
+});
+
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
