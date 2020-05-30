@@ -184,7 +184,7 @@ body {
 .container-books {
   text-align: center;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(37rem, 1fr));
   grid-template-rows: repeat(2,1fr);
   grid-gap: 0;
   padding: 5rem;
@@ -968,7 +968,7 @@ label {
 
 @media (min-width: 1200px) {
   html {
-    font-size: 8px;
+    font-size: 7px;
   }
   .details {
     font-size: 1rem;
