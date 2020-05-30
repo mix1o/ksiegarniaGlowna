@@ -34,7 +34,11 @@ function Cart(){
     }
 
  
-    
+    let isEmpty = true;
+
+    if(items.length > 0){
+        isEmpty = false;
+    }
 
 
 
@@ -49,8 +53,9 @@ function Cart(){
             </div>
             
             <div className="actions-cart">
-            {user && <button className="cart-buy" onClick={() => addOrder()} >Kupuję</button>}
-            {!user && <><button className="cart-buy"><Link to="/sign" className="clear">Zaloguj się aby dokonać transakcji</Link></button>
+            {isEmpty && <p className="empty-basket">Aktaualnie nie masz nic w koszyku</p>}
+            {user && !isEmpty && <button className="cart-buy" onClick={() => addOrder()} >Kupuję</button>}
+            {!user && !isEmpty && <><button className="cart-buy"><Link to="/sign" className="clear">Zaloguj się aby dokonać transakcji</Link></button>
             <p className="text-about-account">Nie posiadasz konta?</p><Link className="text-add-user" to="/registration">Zarejestruj się !</Link></>}
             </div>
         </div> 
