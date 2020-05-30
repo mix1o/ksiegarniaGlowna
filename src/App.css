@@ -188,7 +188,7 @@ body {
   grid-template-rows: repeat(2,1fr);
   grid-gap: 0;
   padding: 5rem;
-  height: 100vh;
+  min-height: 100vh;
   width:100%;
   margin-top: 12rem;
 }
@@ -998,7 +998,7 @@ label {
 
 @media (max-width: 700px) and (orientation: portrait) {
   html {
-    font-size: 4px;
+    font-size: 5px;
   }
   body {
     padding: 0;
@@ -1015,6 +1015,15 @@ label {
     width: 100%;
     order: 1;
     min-height: 60vh;
+  }
+  .para {
+    width: 80%;
+  }
+  .menu-list {
+    margin-top: 20rem;
+  }
+  .container-books {
+    width:30rem;
   }
 }
 
