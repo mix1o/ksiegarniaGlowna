@@ -963,6 +963,11 @@ label {
   height: 15rem;
 }
 
+@media (min-width: 1600px){
+  html {
+    font-size: 10px;
+  }
+}
 
 @media (min-width: 1200px) {
   html {
