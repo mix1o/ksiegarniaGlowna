@@ -1081,6 +1081,15 @@ label {
   .table-order-single {
     width: 100%;
   }
+
+}
+@media (max-width: 374px) and (orientation: portrait){
+  html {
+    font-size: 3px;
+  }
+  .form > label {
+    font-size: 2rem;
+  }
   .container-sign-parent {
     min-height: 100vh;
     min-width: 100%;
@@ -1089,8 +1098,14 @@ label {
     min-height: 100vh;
     min-width: 100%;
   }
+  .container-registration {
+    width: 100%;
+  }
+  .container-search {
+    width: 100%;
+    background: red;
+  }
 }
-
 
 
 
