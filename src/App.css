@@ -962,3 +962,10 @@ label {
   width: 10rem;
   height: 15rem;
 }
+
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 8px;
+  }
+}
