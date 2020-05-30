@@ -988,7 +988,7 @@ label {
 
 @media (min-width: 1600px){
   html {
-    font-size: 10px;
+    font-size: 9px;
   }
   .btn-add {
     font-size: 1.3rem;
@@ -1001,7 +1001,7 @@ label {
 
 @media (max-width: 700px) , screen and (max-height: 360px) {
   html {
-    font-size: 5px;
+    font-size: 4px;
   }
   body {
     padding: 0;
