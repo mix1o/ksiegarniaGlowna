@@ -1008,9 +1008,12 @@ label {
   }
   .left-box {
     width: 100%;
+    min-height: 60vh;
   }
   .right-box {
     width: 100%;
+    order: 1;
+    min-height: 60vh;
   }
 }
 
