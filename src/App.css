@@ -966,6 +966,9 @@ label {
 
 @media (min-width: 1200px) {
   html {
-    font-size: 7px;
+    font-size: 8px;
+  }
+  .details {
+    font-size: 1rem;
   }
 }
