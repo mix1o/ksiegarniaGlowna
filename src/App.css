@@ -1000,8 +1000,17 @@ label {
   html {
     font-size: 4px;
   }
+  body {
+    padding: 0;
+  }
   .container {
     flex-direction: column;
+  }
+  .left-box {
+    width: 100%;
+  }
+  .right-box {
+    width: 100%;
   }
 }
 
