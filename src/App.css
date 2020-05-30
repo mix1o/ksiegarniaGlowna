@@ -673,7 +673,7 @@ label {
 .container-single-category {
   text-align: center;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(36rem, 42rem));
+  grid-template-columns: repeat(auto-fit, minmax(35rem, 42rem));
   grid-template-rows: repeat(2,1fr);
   grid-gap: 0;
   padding: 5rem;
@@ -968,7 +968,7 @@ label {
 
 @media (min-width: 1200px) {
   html {
-    font-size: 7px;
+    font-size: 7.5px;
   }
   .details {
     font-size: 1rem;
