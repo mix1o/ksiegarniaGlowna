@@ -1011,7 +1011,7 @@ label {
   }
   .left-box {
     width: 100%;
-    min-height: 60vh;
+    min-height: 70vh;
     order: 2;
   }
   .right-box {
