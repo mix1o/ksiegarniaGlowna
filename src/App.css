@@ -1080,6 +1080,14 @@ label {
   .table-order-single {
     width: 100%;
   }
+  .container-sign-parent {
+    min-height: 100vh;
+    min-width: 100%;
+  }
+  .container-registration-parent {
+    min-height: 100vh;
+    min-width: 100%;
+  }
 }
 
 
