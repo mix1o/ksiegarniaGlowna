@@ -390,7 +390,7 @@ body {
 .container-registration {
   text-align: center;
   background: #ffd20c;
-  width: 35%;
+  min-width: 35%;
   height: 60vh;
   padding: 2rem;
 }
