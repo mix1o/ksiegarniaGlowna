@@ -512,6 +512,7 @@ label {
   top: 10%;
   left: 50%;
   transform: translate(-50%,-50%);
+  z-index: 5;
 }
 .hr-inpt {
   text-align: center;
@@ -908,6 +909,7 @@ label {
   margin-top: 10rem;
   overflow: scroll;
   overflow-x: hidden;
+  z-index: 1;
 }
 .text-book {
   grid-template-columns: repeat(3,1fr);
@@ -920,6 +922,7 @@ label {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 48.5rem;
 }
 .table-order,.table-order-single {
   border: 3px solid #38af38;
