@@ -900,7 +900,7 @@ label {
   width: 95%;
   height: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr));
   background:#333;
   grid-gap: 4rem;
   padding: 5rem;
